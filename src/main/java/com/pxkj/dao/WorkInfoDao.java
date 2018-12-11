@@ -8,8 +8,8 @@ import java.util.Map;
 @Component
 public interface WorkInfoDao {
 
-    List<Map<String, Object>> getWorkInfo();
+    List<Map<String, Object>> getWorkInfo(Map<String, Object> params);
 
-    List<Map<String, Object>> getWorkInfo2();
+    List<Map<String, Object>> getWorkInfo2(Map<String, Object> params);
 
 }

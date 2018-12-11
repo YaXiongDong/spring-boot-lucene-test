@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -23,7 +24,10 @@ public class WorkInfoService {
     private IndexesService indexesService;
 
     public List<Map<String, Object>> html2Text() {
-        List<Map<String, Object>> info = workInfoDao.getWorkInfo();
+        Map<String, Object> params = new HashMap<>();
+        params.put("start", 0);
+        params.put("length", 100);
+        List<Map<String, Object>> info = workInfoDao.getWorkInfo(params);
         if (info != null && info.size() > 0) {
             for (Map<String, Object> map : info) {
                 String htmlStr = map.getOrDefault("html", "").toString();
@@ -39,8 +43,11 @@ public class WorkInfoService {
     }
 
     public List<Map<String, String>> searchHtml() {
+        Map<String, Object> params = new HashMap<>();
+        params.put("start", 95);
+        params.put("length", 1);
         List<Map<String, String>> result = new ArrayList<>();
-        List<Map<String, Object>> info = workInfoDao.getWorkInfo2();
+        List<Map<String, Object>> info = workInfoDao.getWorkInfo2(params);
         System.out.println(info);
         if (info != null && info.size() > 0) {
             for (Map<String, Object> map : info) {

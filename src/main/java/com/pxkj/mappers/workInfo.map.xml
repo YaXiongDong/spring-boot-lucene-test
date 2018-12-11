@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pxkj.dao.WorkInfoDao">
 
-	<select id="getWorkInfo" resultType="map">
+	<select id="getWorkInfo" resultType="map" parameterType="map">
 		select
 			a.title, b.Id, b.html
 		from
@@ -14,10 +14,10 @@
 		where
 			a.status = 1
 		limit
-			100, 100
+			#{start}, #{length}
 	</select>
 
-	<select id="getWorkInfo2" resultType="map">
+	<select id="getWorkInfo2" resultType="map" parameterType="map">
 		select
 			   a.title, b.Id, b.html
 		from
@@ -29,7 +29,7 @@
 		where
 			a.status = 1
 		limit
-			  95, 1
+			#{start}, #{length}
 	</select>
 	
 </mapper>
